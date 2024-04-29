@@ -1,10 +1,14 @@
 package NEWPAACKONE;
 
+import java.sql.Driver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -29,11 +33,14 @@ public class NewTest {
 		spark = new ExtentSparkReporter("test-output/spak.html");
 		
 	}
+		
+	
 	
 
 	
-  @Test 
+  @Test (retryAnalyzer = listerb.class)
   public void f() {
+	  
 	  WebDriver driver = new ChromeDriver();
 	  
 	  
@@ -44,6 +51,8 @@ public class NewTest {
         WebElement da= driver.findElement(By.id("APjFqb")) ;
         da.sendKeys("new");
         da.submit();
+        Assert.assertEquals(driver.getTitle(),"mnew" );
+        
   }
 	@Test 
 	  public void j() {
@@ -59,9 +68,15 @@ public class NewTest {
 	        da.submit();
 	  }
 	
-	@AfterTest
-	public void extg() {
-		extentreport.flush();
-	}
+	//@AfterTest
+	//public void extg() {
+		//extentreport.flush();
 	
-}
+
+@AfterMethod
+public void exta() {
+	driver.close();
+}}
+
+	
+

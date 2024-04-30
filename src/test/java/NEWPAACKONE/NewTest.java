@@ -30,7 +30,9 @@ public class NewTest {
 	@BeforeTest
 	public void ext() {
 		extentreport = new ExtentReports();
-		spark = new ExtentSparkReporter("test-output/spak.html");
+		spark = new ExtentSparkReporter("//test-output/spark.html");
+		
+		extentreport.attachReporter(spark);
 		
 	}
 		
@@ -38,20 +40,19 @@ public class NewTest {
 	
 
 	
-  @Test (retryAnalyzer = listerb.class)
+  @Test //(retryAnalyzer = listerb.class)
   public void f() {
+	  extenttest = extentreport.createTest("test");
 	  
-	  WebDriver driver = new ChromeDriver();
+	    driver.get("https://www.google.com/");
 	  
-	  
-		driver.get("https://www.google.com/");
 		System.out.println("page title .." + driver.getTitle());
         
         
         WebElement da= driver.findElement(By.id("APjFqb")) ;
         da.sendKeys("new");
         da.submit();
-        Assert.assertEquals(driver.getTitle(),"mnew" );
+        Assert.assertEquals(driver.getTitle(),"n" );
         
   }
 	@Test 
@@ -68,12 +69,12 @@ public class NewTest {
 	        da.submit();
 	  }
 	
-	//@AfterTest
-	//public void extg() {
-		//extentreport.flush();
+	@AfterTest
+	public void extg() {
+		extentreport.flush();
+	}}
 	
-
-@AfterMethod
+@AfterMethod 
 public void exta() {
 	driver.close();
 }}

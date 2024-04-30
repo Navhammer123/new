@@ -3,11 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="NEWPAACKONE.NewTest">
+      <class name="NEWPAACKONE.login">
         <methods>
-          <include name="f"/>
+          <include name="f" invocation-numbers="1 2"/>
+          <include name="setup"/>
+          <include name="exta"/>
+          <include name="insetu"/>
         </methods>
-      </class> <!-- NEWPAACKONE.NewTest -->
+      </class> <!-- NEWPAACKONE.login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
